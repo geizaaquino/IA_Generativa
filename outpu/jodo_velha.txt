@@ -1,0 +1,57 @@
+ Aqui está um exemplo simples de um Jogo da Velha em Java que pode ser jogado entre dois jogadores humanos. O código está em modo texto e não inclui a lógica para um jogador computadorizado, mas é um bom ponto de partida:
+Codigo criado pelo COPILOT
+
+// JogoDaVelha.java
+public class JogoDaVelha {
+    public static void main(String[] args) {
+        Jogo jogo = new Jogo();
+    }
+}
+
+// Tabuleiro.java
+public class Tabuleiro {
+    private int[][] tabuleiro = new int[3][3];
+
+    public Tabuleiro() {
+        zerarTabuleiro();
+    }
+
+    public void zerarTabuleiro() {
+        for (int linha = 0; linha < 3; linha++) {
+            for (int coluna = 0; coluna < 3; coluna++) {
+                tabuleiro[linha][coluna] = 0;
+            }
+        }
+    }
+
+    public void exibeTabuleiro() {
+        System.out.println();
+        for (int linha = 0; linha < 3; linha++) {
+            for (int coluna = 0; coluna < 3; coluna++) {
+                if (tabuleiro[linha][coluna] == -1) {
+                    System.out.print(" X ");
+                } else if (tabuleiro[linha][coluna] == 1) {
+                    System.out.print(" O ");
+                } else {
+                    System.out.print("   ");
+                }
+                if (coluna == 0 || coluna == 1) {
+                    System.out.print("|");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public int getPosicao(int[] tentativa) {
+        return tabuleiro[tentativa[0]][tentativa[1]];
+    }
+
+    public void setPosicao(int[] tentativa, int jogador) {
+        if (jogador == 1) {
+            tabuleiro[tentativa[0]][tentativa[1]] = -1;
+        } else {
+            tabuleiro[tentativa[0]][tentativa[1]] = 1;
+        }
+    }
+}
